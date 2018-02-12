@@ -125,12 +125,14 @@ namespace TechJobsConsole
         //remember what Victor said someJobs is parameter serving as local variable
         //Two problems one is adding the column and the other the rows
         {
-            foreach(Dictionary<string,string> item in someJobs)
+            foreach(Dictionary<string,string> item in someJobs)//item is a dictionary object
             {
+                Console.WriteLine("*****");//Separate each dictionary object
                 foreach(KeyValuePair<string,string> pair in item)
                 {
-                    Console.WriteLine(string.Format("{0} {1}", pair.Key, pair.Value));
+                    Console.WriteLine(string.Format("{0} : {1}", pair.Key, pair.Value));
                 }
+                Console.WriteLine("*****");
             }
             //Console.WriteLine("printJobs is not implemented yet!");
             /*
