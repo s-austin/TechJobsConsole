@@ -117,8 +117,25 @@ namespace TechJobsConsole
         }
 
         private static void PrintJobs(List<Dictionary<string, string>> someJobs)
+        //See Patrick example for Studio 2 on Thursday Feb 8
+        // foreach(KeyValuePair<char, int> entry in charCount) {
+        //Console.WriteLine("{0}:{1}", entry.Key, entry.Value);
+        //}
+        //someJobs is -- asking a question here -- defined by being in this syntax?
+        //remember what Victor said someJobs is parameter serving as local variable
+        //Two problems one is adding the column and the other the rows
         {
-            Console.WriteLine("printJobs is not implemented yet");
+            foreach(Dictionary<string,string> item in someJobs)
+            {
+                foreach(KeyValuePair<string,string> pair in item)
+                {
+                    Console.WriteLine(string.Format("{0} {1}", pair.Key, pair.Value));
+                }
+            }
+            //Console.WriteLine("printJobs is not implemented yet!");
+            /*
+            https://stackoverflow.com/questions/11017461/c-sharp-looping-through-listdictionarystring-string-to-populate-a-database
+            */
         }
     }
 }
