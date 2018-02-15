@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
 using System.Text;
+using System.Text.RegularExpressions;
 
 namespace TechJobsConsole
 {
@@ -147,6 +148,10 @@ namespace TechJobsConsole
 
             IsDataLoaded = true;
         }
+        //
+
+        //
+
 
         /*
          * Parse a single line of a CSV file into a string array
@@ -154,12 +159,13 @@ namespace TechJobsConsole
         private static string[] CSVRowToStringArray(string row, char fieldSeparator = ',', char stringSeparator = '\"')
         {
             bool isBetweenQuotes = false;
-            var comparer = StringComparer.OrdinalIgnoreCase;
+
+            //var comparer = StringComparer.OrdinalIgnoreCase;
             StringBuilder valueBuilder = new StringBuilder();
             List<string> rowValues = new List<string>();
-
             // Loop through the row string one char at a time
             foreach (char c in row.ToCharArray())
+   
             {
                 if ((c == fieldSeparator && !isBetweenQuotes))
                 {
