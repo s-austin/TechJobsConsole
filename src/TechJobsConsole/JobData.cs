@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
 using System.Text;
@@ -101,8 +102,6 @@ namespace TechJobsConsole
 
             return jobs;
 
-
-
         }
         //
         /*
@@ -155,6 +154,7 @@ namespace TechJobsConsole
         private static string[] CSVRowToStringArray(string row, char fieldSeparator = ',', char stringSeparator = '\"')
         {
             bool isBetweenQuotes = false;
+            StringComparer ordICCmp = StringComparer.OrdinalIgnoreCase;
             StringBuilder valueBuilder = new StringBuilder();
             List<string> rowValues = new List<string>();
 
