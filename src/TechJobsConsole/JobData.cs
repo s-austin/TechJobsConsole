@@ -6,7 +6,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Globalization;
 using System.Threading;
-
+using System.Linq;
 
 namespace TechJobsConsole
 {
@@ -15,7 +15,7 @@ namespace TechJobsConsole
         static List<Dictionary<string, string>> AllJobs = new List<Dictionary<string, string>>();
         static bool IsDataLoaded = false;
 
-        public static StringComparer OrdinalIgnoreCase { get; }
+       // public static StringComparer OrdinalIgnoreCase { get; }
 
         public static List<Dictionary<string, string>> FindAll()
         {
@@ -36,14 +36,15 @@ namespace TechJobsConsole
 
             foreach (Dictionary<string, string> job in AllJobs)
             {
-                string aValue = job[column];
-                //
-                Regex regexText = new Regex(aValue, RegexOptions.IgnoreCase);
-                //
+                string aValue = job[column].ToLower();
 
+                //If the List does not contain the WORD in lowercase format then we will add it
+                //Regex aValueRegex = new Regex(aValue, RegexOptions.IgnoreCase);
+                //
+                //if (!values.Contains(aValueRegex))
                 if (!values.Contains(aValue))
                 {
-                    values.Add(aValue);
+                    values.Add(aValue);//adding the word they typed in 
                 }
             }
             return values;
@@ -58,7 +59,7 @@ namespace TechJobsConsole
 
             foreach (Dictionary<string, string> row in AllJobs)
             {
-                string aValue = row[column];
+                string aValue = row[column].ToLower();
 
                 if (aValue.Contains(value))
                 {
@@ -73,11 +74,9 @@ namespace TechJobsConsole
         public static List<Dictionary<string, string>> FindByValue(string value)
 
         {
-
             LoadData();
 
             List<Dictionary<string, string>> jobs = new List<Dictionary<string, string>>();
-
 
             foreach (Dictionary<string, string> row in AllJobs)
 
@@ -131,7 +130,7 @@ namespace TechJobsConsole
             {
                 while (reader.Peek() >= 0)
                 {
-                    string line = reader.ReadLine();
+                    string line = reader.ReadLine().ToLower();
                     string[] rowArrray = CSVRowToStringArray(line);
                     if (rowArrray.Length > 0)
                     {
