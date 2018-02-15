@@ -15,7 +15,7 @@ namespace TechJobsConsole
         static List<Dictionary<string, string>> AllJobs = new List<Dictionary<string, string>>();
         static bool IsDataLoaded = false;
 
-        StringComparer ordICCmp = StringComparer.OrdinalIgnoreCase;
+        public static StringComparer OrdinalIgnoreCase { get; }
 
         public static List<Dictionary<string, string>> FindAll()
         {
@@ -38,7 +38,6 @@ namespace TechJobsConsole
             {
                 string aValue = job[column];
 
-                aValue = aValue.ToLower();
                 if (!values.Contains(aValue))
                 {
                     values.Add(aValue);
@@ -57,7 +56,6 @@ namespace TechJobsConsole
             foreach (Dictionary<string, string> row in AllJobs)
             {
                 string aValue = row[column];
-                aValue = aValue.ToLower();
 
                 if (aValue.Contains(value))
                 {
