@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
+using System.Globalization;
+using System.Threading;
+
 
 namespace TechJobsConsole
 {
@@ -22,6 +25,8 @@ namespace TechJobsConsole
             columnChoices.Add("location", "Location");
             columnChoices.Add("position type", "Position Type");
             columnChoices.Add("all", "All");
+
+            StringComparer ordICCmp = StringComparer.OrdinalIgnoreCase;
 
             Console.WriteLine("Welcome to LaunchCode's TechJobs App!");
 

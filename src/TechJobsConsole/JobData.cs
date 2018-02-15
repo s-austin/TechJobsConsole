@@ -4,6 +4,9 @@ using System.IO;
 using System.Reflection;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Globalization;
+using System.Threading;
+
 
 namespace TechJobsConsole
 {
@@ -12,11 +15,14 @@ namespace TechJobsConsole
         static List<Dictionary<string, string>> AllJobs = new List<Dictionary<string, string>>();
         static bool IsDataLoaded = false;
 
+        StringComparer ordICCmp = StringComparer.OrdinalIgnoreCase;
+
         public static List<Dictionary<string, string>> FindAll()
         {
             LoadData();
             return AllJobs;
         }
+
 
         /*
          * Returns a list of all values contained in a given column,
@@ -32,6 +38,7 @@ namespace TechJobsConsole
             {
                 string aValue = job[column];
 
+                aValue = aValue.ToLower();
                 if (!values.Contains(aValue))
                 {
                     values.Add(aValue);
@@ -50,6 +57,7 @@ namespace TechJobsConsole
             foreach (Dictionary<string, string> row in AllJobs)
             {
                 string aValue = row[column];
+                aValue = aValue.ToLower();
 
                 if (aValue.Contains(value))
                 {
