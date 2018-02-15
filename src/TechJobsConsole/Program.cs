@@ -63,7 +63,9 @@ namespace TechJobsConsole
                     // Fetch results
                     if (columnChoice.Equals("all"))
                     {
-                        Console.WriteLine("Search all fields not yet implemented.");
+                        searchResults = JobData.FindByValue(searchTerm);
+                        PrintJobs(searchResults);
+                        //Console.WriteLine("Search all fields not yet implemented.");
                     }
                     else
                     {
@@ -82,6 +84,7 @@ namespace TechJobsConsole
             int choiceIdx;
             bool isValidChoice = false;
             string[] choiceKeys = new string[choices.Count];
+            //counts the columns and sets aside memory
 
             int i = 0;
             foreach (KeyValuePair<string, string> choice in choices)
