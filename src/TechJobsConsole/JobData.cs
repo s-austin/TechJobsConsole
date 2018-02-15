@@ -37,6 +37,9 @@ namespace TechJobsConsole
             foreach (Dictionary<string, string> job in AllJobs)
             {
                 string aValue = job[column];
+                //
+                Regex regexText = new Regex(aValue, RegexOptions.IgnoreCase);
+                //
 
                 if (!values.Contains(aValue))
                 {
